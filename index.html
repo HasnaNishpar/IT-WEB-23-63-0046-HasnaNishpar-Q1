@@ -44,12 +44,13 @@
                 <h1 class="headline mt-5">Task Management and lists Tool </h1>
                 <p class="text1 mt-5">We believe that designing products and services in close partnership with our clients is the only way to have a real impact on their business. </p>
                 <nav class="navbar navbar-light">
-                    <div class="container-fluid">
-                      <form class="d-flex mt-5 mb-5">
-                        <input class="form-control me-2 form-text" type="search" placeholder="Name@company.com" aria-label="Search">
-                        <button class="btn btn-outline-success btn2" type="submit">Try it free</button>
-                      </form>
-                    </div>
+                  <div class="container">
+                    <form id="emailForm1" class="d-flex mt-5 mb-5">
+                      <input class="form-control me-2 form-text" id="emailInput1" type="search" placeholder="Name@company.com" aria-label="Search">
+                      <button class="btn btn-outline-success btn2" type="submit">Try it free</button>
+                    </form>
+                    <p id="errorMessage1" class="error"></p>
+                  </div>
                   </nav>
             </div>
 
@@ -195,51 +196,48 @@
                           <div class="col-md-3"></div>
                           <div class="col-md-6 col-sm-6">
                             <p class="footer-text">See why millions of people across 195 countries use Dash. </p>
-                            <div class="container-fluid footer-feild">
-                              <form class="d-flex mt-5 mb-5">
-                                <input class="form-control me-2 form-text" type="search" placeholder="Name@company.com" aria-label="Search">
+                            <div class="container">
+                              <form id="emailForm2" class="d-flex mt-5 mb-5">
+                                <input class="form-control me-2 form-text" id="emailInput2" type="search" placeholder="Name@company.com" aria-label="Search">
                                 <button class="btn btn-outline-success btn2" type="submit">Try it free</button>
                               </form>
+                              <p id="errorMessage2" class="error"></p>
                             </div>
                           </div>
                           <div class="col-md-3"></div>
                         </div>
-
 
                   </div>
               </div>
               </div>
           </footer>
 
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          <script>
+            function validateEmailForm(formId, inputId, errorMessageId) {
+              document.getElementById(formId).addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+        
+                var emailInput = document.getElementById(inputId).value;
+                var errorMessage = document.getElementById(errorMessageId);
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+                if (emailPattern.test(emailInput)) {
+                  errorMessage.textContent = ''; // Clear any previous error messages
+                  alert('Form submitted successfully!');
+                  // Proceed with form submission or AJAX request here
+                } else {
+                  errorMessage.textContent = 'Please enter a valid email address.';
+                }
+              });
+            }
+        
+            // Call the function for each form
+            validateEmailForm('emailForm1', 'emailInput1', 'errorMessage1');
+            validateEmailForm('emailForm2', 'emailInput2', 'errorMessage2');
+          </script>
+</body>
+</html>
+        </script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
